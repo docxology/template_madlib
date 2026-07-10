@@ -9,9 +9,11 @@ same forkability contract as the older exemplars.
 - Manuscript pre-render gate: `uv run python -m infrastructure.validation.cli prerender projects/templates/template_madlib/manuscript --repo-root .`
 - Project tests and coverage: `uv run pytest projects/templates/template_madlib/tests/ --cov=projects/templates/template_madlib/src --cov-fail-under=90`
 - Generated artifacts come from `scripts/01_generate_madlib_artifacts.py` and `scripts/z_generate_manuscript_variables.py`.
-- Repo drift gate: `uv run python scripts/check_template_drift.py --strict`
-- Publication evidence: standalone GitHub repository `docxology/template_madlib`, concept DOI `10.5281/zenodo.20786638`, and version DOI `10.5281/zenodo.20932025`.
-- **Coverage: 100% (144 tests) as of the last test expansion.** All branches in `config.py`, `composition.py`, `tokens.py`, `analysis.py`, `analysis_fields.py`, `analysis_figures.py`, `analysis_reports.py`, `manuscript_variables.py`, and `__init__.py` are covered.
+- Repo drift gate: `uv run python scripts/audit/check_template_drift.py --strict`
+- Live test counts and coverage are read from
+  [`docs/_generated/COUNTS.md`](../../../docs/_generated/COUNTS.md), not pinned
+  here; keep every `src/` module (config, composition, tokens, analysis,
+  artifact_writers, manuscript_variables) branch-covered under the 90% gate.
 
 ## Integrity and template-status gaps
 
@@ -41,7 +43,7 @@ same forkability contract as the older exemplars.
 ## Ordered improvement ladder
 
 1. Keep release metadata, module size, tests, and drift gates green as the published canonical exemplar evolves.
-2. ~~Add negative controls for unresolved placeholders and missing token provenance.~~ ✓ Covered in test_config_extended, test_tokens_extended.
-3. ~~Add negative controls for digest-invariant drift and missing review-packet artifacts.~~ ✓ Covered in test_tokens_extended, test_analysis_extended.
+2. ~~Add negative controls for unresolved placeholders and missing token provenance.~~ ✓ Covered in `test_config.py` and `test_tokens.py`.
+3. ~~Add negative controls for digest-invariant drift and missing review-packet artifacts.~~ ✓ Covered in `test_tokens.py` and `test_composition_and_analysis.py`.
 4. Add schema migrations only with compatibility tests from the current config.
 5. Promote domain-fork examples only after they add domain validators and explicit non-claim boundaries.

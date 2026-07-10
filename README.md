@@ -19,7 +19,7 @@ hand-edit between the markers; update the config and regenerate (see the legend)
 
 Concept DOI: [10.5281/zenodo.20786638](https://doi.org/10.5281/zenodo.20786638) | Version DOI: [10.5281/zenodo.20932025](https://zenodo.org/records/20932025) | Repository: [docxology/template_madlib](https://github.com/docxology/template_madlib)
 
-Publishing surface — 12 platforms, 9 published:
+Publishing surface — 20 platforms, 9 published:
 
 | Platform | Tier | Status | Reference | Credentials |
 | --- | --- | --- | --- | --- |
@@ -35,10 +35,18 @@ Publishing surface — 12 platforms, 9 published:
 | netlify | first-class | ✅ published | [https://6a44418df7f6f9fa20037643--tranquil-kleicha-0c9203.netlify.app](https://6a44418df7f6f9fa20037643--tranquil-kleicha-0c9203.netlify.app) | `NETLIFY_AUTH_TOKEN` |
 | huggingface_hub | first-class | ✅ published | [https://huggingface.co/datasets/ActiveInference/template_madlib](https://huggingface.co/datasets/ActiveInference/template_madlib) | `HUGGINGFACE_TOKEN`, `HF_TOKEN` |
 | osf | first-class | ✅ published | [https://osf.io/ndpue/](https://osf.io/ndpue/) | `OSF_TOKEN` |
+| amazon_kdp | documented | 🟡 planned | — | `AMAZON_KDP_EMAIL`, `AMAZON_KDP_PASSWORD` |
+| google_play_books | documented | 🟡 planned | — | `GOOGLE_PLAY_BOOKS_SERVICE_ACCOUNT_JSON` |
+| gumroad | documented | 🟡 planned | — | `GUMROAD_ACCESS_TOKEN` |
+| leanpub | documented | 🟡 planned | — | `LEANPUB_API_KEY` |
+| lulu | documented | 🟡 planned | — | `LULU_CLIENT_KEY`, `LULU_CLIENT_SECRET` |
+| draft2digital | documented | 🟡 planned | — | `DRAFT2DIGITAL_API_TOKEN` |
+| stripe | documented | 🟡 planned | — | `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY` |
+| ingramspark | documented | 🟡 planned | — | `INGRAMSPARK_CLIENT_ID`, `INGRAMSPARK_CLIENT_SECRET` |
 
 _Keywords: madlib generation, token injection, conditional manuscripts, reproducible research, IMRAD._
 
-_Status legend: ✅ published (durable identifier recorded in `config.yaml`) · ⚪ available (adapter implemented and locally verifiable) · 🟡 planned. This block is generated — edit `manuscript/config.yaml`, then regenerate with `uv run python -m infrastructure.publishing.status_report --project <path> --write`._
+_Status legend: ✅ published (durable identifier recorded in `config.yaml`) · 🔵 reserved (identifier reserved but not yet registered by final publication) · ⚪ available (adapter implemented and locally verifiable) · 🟡 planned. This block is generated — edit `manuscript/config.yaml`, then regenerate with `uv run python -m infrastructure.publishing.status_report --project <path> --write`._
 <!-- PUBLISHING-STATUS:END -->
 
 The 3 platforms still shown ⚪ available are not automatable to "published" with
@@ -59,8 +67,8 @@ git clone https://github.com/docxology/template
 cd template
 uv sync
 ./run.sh --project templates/template_madlib --pipeline --core-only
-uv run python scripts/04_validate_output.py --project templates/template_madlib
-uv run python scripts/05_copy_outputs.py --project templates/template_madlib
+uv run python scripts/pipeline/stage_04_validate.py --project templates/template_madlib
+uv run python scripts/pipeline/stage_05_copy.py --project templates/template_madlib
 ```
 
 Standalone repositories are publication mirrors for source, DOI metadata, and
@@ -133,6 +141,16 @@ Stage 03 renders PDF, HTML, and slides from the hydrated manuscript. Stage 04 ve
 
 ## Boundaries
 
+This exemplar demonstrates configuration-driven token injection, not
+natural-language quality or domain scholarship: random word substitution
+against a seeded lexicon does not create scholarship, and the generated
+manuscript is not a claim of empirically validated or reader-ready
+content on its own. Forks that add domain claims need additional domain
+validators and claim-ledger entries before they can claim domain
+evidence (see the Method Protocol Contract above). The scope stops at
+deterministic token planning, section allocation, and evidence-table
+generation from `manuscript/config.yaml`; it does not evaluate or assert
+the truth of the substituted content itself.
 
 ## Variants
 
@@ -152,7 +170,7 @@ claim ledger.
 - Forward backlog: [`TODO.md`](TODO.md).
 - Copy-and-customize config: [`manuscript/config.yaml.example`](manuscript/config.yaml.example).
 - Project validation: `uv run pytest projects/templates/template_madlib/tests/ --cov=projects/templates/template_madlib/src --cov-fail-under=90`.
-- Repo drift validation: `uv run python scripts/check_template_drift.py --strict`.
+- Repo drift validation: `uv run python scripts/audit/check_template_drift.py --strict`.
 
 Output Markdown, PDF, HTML, slides, figures, reports, and copied deliverables are disposable. Regenerate them through Stages 02-05 after source edits; do not hand-edit `output/` artifacts to make a method or documentation claim pass review.
 
