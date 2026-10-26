@@ -12,6 +12,8 @@ Rules:
 - Keep figure references behind `{{METHODS_FIGURES}}`, `{{RESULTS_FIGURES}}`, `{{CONFIGURATION_FIGURES}}`, and `{{EVALUATION_FIGURES}}`.
 - Add new placeholders only after adding corresponding keys in `src/manuscript_variables.py` and tests in `tests/test_manuscript_variables.py`.
 
+Run from the `docxology/template` monorepo checkout (the script imports `infrastructure.*`, so it does not run in this standalone mirror):
+
 ```bash
 uv run python projects/templates/template_madlib/scripts/z_generate_manuscript_variables.py
 rg "\\{\\{" projects/templates/template_madlib/output/manuscript

@@ -1,10 +1,11 @@
 # Quickstart — Template Madlib
 
 ```bash
-# Run the full pipeline
-uv run python scripts/pipeline/stage_02_analysis.py --project templates/template_madlib
-uv run python scripts/pipeline/stage_03_render.py --project templates/template_madlib
+# Install dependencies
+uv sync --extra dev
 
 # Run tests
-uv run pytest projects/templates/template_madlib/tests/ --cov=projects/templates/template_madlib/src --cov-fail-under=90
+uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
 ```
+
+Stage 02-05 pipeline commands (`scripts/pipeline/*.py --project templates/template_madlib`) run from the [`docxology/template`](https://github.com/docxology/template) monorepo checkout: the `scripts/*` wrappers import `infrastructure.*`, which this standalone mirror does not ship.

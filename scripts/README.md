@@ -1,6 +1,8 @@
 # Scripts
 
-Scripts are thin orchestrators.
+Scripts are thin orchestrators. They import `infrastructure.*`, so they run from
+the [`docxology/template`](https://github.com/docxology/template) monorepo
+checkout, where the shared stage machinery is installed:
 
 ```bash
 uv run python projects/templates/template_madlib/scripts/01_generate_madlib_artifacts.py

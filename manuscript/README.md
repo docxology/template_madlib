@@ -34,7 +34,7 @@ Method review has three additional obligations:
 - Claim-ledger alignment must travel with prose: a method or domain claim needs a local evidence row, external evidence, or an explicit non-claim boundary.
 - Review-packet handoff must include hydrated Markdown, PDF, web output, slides, figures, data, reports, validation results, and copy statistics together.
 
-Run hydration directly when editing manuscript placeholders:
+Run hydration from the `docxology/template` monorepo checkout when editing manuscript placeholders (the script imports `infrastructure.*`, so it does not run in this standalone mirror):
 
 ```bash
 uv run python projects/templates/template_madlib/scripts/z_generate_manuscript_variables.py

@@ -18,4 +18,4 @@ Agents that need to:
 
 ## Cross-refs
 
-- Project root: [`../../..`](../../../).
+- Project root: [`../../..`](../../../) — this repository root; the monorepo copy of the exemplar lives at `projects/templates/template_madlib/`.

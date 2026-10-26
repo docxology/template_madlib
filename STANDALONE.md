@@ -40,9 +40,12 @@ Before a fork claims a new method, update the config-owned method surface first:
 Run the project-local gate after edits:
 
 ```bash
-uv run pytest tests/ --cov=src --cov-fail-under=90
-uv run python scripts/01_generate_madlib_artifacts.py
-uv run python scripts/z_generate_manuscript_variables.py
+uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
 ```
+
+`scripts/01_generate_madlib_artifacts.py` and
+`scripts/z_generate_manuscript_variables.py` import `infrastructure.*`, which
+ships only with the `docxology/template` monorepo checkout; run them there to
+regenerate artifacts and the hydrated manuscript.
 
 Keep DOI metadata tied to real deposited records. The canonical public exemplar is published at `https://github.com/docxology/template_madlib` with concept DOI `10.5281/zenodo.20786638` and version DOI `10.5281/zenodo.20932025`; forks should replace those identifiers only after minting their own records. Do not hand-edit generated Markdown, PDF, HTML, slides, figures, reports, or copied deliverables as if they were source; regenerate them through the equivalent Stage 02-05 pipeline.

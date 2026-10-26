@@ -25,18 +25,19 @@
 - Keep publication claims local unless a real DOI, release, or external validation exists.
 - Regenerate output through Stages 02-05 after source or config edits; do not hand-edit generated Markdown, PDFs, HTML, slides, figures, reports, or copied deliverables.
 
-Decision memory and verifier hardening follow [`../../../docs/rules/memory_and_decision_records.md`](../../../docs/rules/memory_and_decision_records.md): use nearby `WHY:` comments only for surprising local choices, keep volatile counts generated, and add negative controls for verifier-like gates.
+Decision memory and verifier hardening follow the monorepo rule `docs/rules/memory_and_decision_records.md` (not shipped in this mirror): use nearby `WHY:` comments only for surprising local choices, keep volatile counts generated, and add negative controls for verifier-like gates.
 
 ## Verification
 
 ```bash
-uv run pytest projects/templates/template_madlib/tests/ --cov=projects/templates/template_madlib/src --cov-fail-under=90
-uv run python scripts/pipeline/stage_02_analysis.py --project templates/template_madlib
-uv run python scripts/pipeline/stage_03_render.py --project templates/template_madlib
-uv run python scripts/pipeline/stage_04_validate.py --project templates/template_madlib
+uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
 ```
 
-A clean validation run should report figure registry, evidence registry, design overlays, and artifact manifest as passed.
+The Stage 02-05 commands (`scripts/pipeline/stage_02_analysis.py --project
+templates/template_madlib` and siblings) require the `infrastructure` package,
+which this standalone mirror does not ship; run them from a `docxology/template`
+checkout. A clean validation run there should report figure registry, evidence
+registry, design overlays, and artifact manifest as passed.
 
 ## Agent skill
 
@@ -47,4 +48,5 @@ quick reference commands, and pitfalls.
 
 ## Publishing
 
-- [Publishing guide](../../../docs/guides/publishing-guide.md) · [Publishing module reference](../../../infrastructure/publishing/README.md) · [Zenodo DOI strategy](../../../docs/guides/zenodo-doi-strategy.md) · [Archival targets](../../../docs/maintenance/archival-targets.md)
+- Publication identity and per-platform status: [`README.md`](README.md#publication-and-rendering) · [`STANDALONE.md`](STANDALONE.md)
+- Shared publishing guides, Zenodo DOI strategy, and archival targets live in the [`docxology/template`](https://github.com/docxology/template) monorepo (`docs/guides/`, `docs/maintenance/`, `infrastructure/publishing/`).

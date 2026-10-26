@@ -1,8 +1,8 @@
 # template_madlib TODO
 
-This backlog is future-only. Completed validation and dated review evidence are preserved in
-[`docs/maintenance/exemplar-backlog-history.md`](../../../docs/maintenance/exemplar-backlog-history.md)
-or in source-owned generated receipts. Each active row must retain a stable ID, size, dependency,
+This backlog is future-only. Completed validation and dated review evidence are preserved in the
+monorepo's `docs/maintenance/exemplar-backlog-history.md` (not shipped in this mirror), or in
+source-owned generated receipts. Each active row must retain a stable ID, size, dependency,
 next action, proving artifact, acceptance command, and negative control; absence of an owner or external receipt
 keeps a capability blocked rather than silently promoting it.
 

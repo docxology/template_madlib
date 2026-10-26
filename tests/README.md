@@ -13,7 +13,7 @@ Tests import project code as `src.<module>` (see `tests/conftest.py` and `pyproj
 Run:
 
 ```bash
-uv run pytest projects/templates/template_madlib/tests/ --cov=projects/templates/template_madlib/src --cov-fail-under=90
+uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
 ```
 
 When method documentation changes, add tests that prove the config rows and generated prose changed together. At minimum, cover the method protocol row, the pipeline phase, the QA probe or failure mode, and the generated table or body paragraph that exposes the new responsibility. If the change affects review handoff, assert the review packet includes data, reports, figures, validation results, and copy statistics rather than only PDF/HTML.

@@ -26,5 +26,5 @@ The important invariant is simple: config changes flow through source code into 
 When a fork changes the generation method, update `config.py` validation if the schema changes, the relevant `composition_*` / `figure_specs` prose, `analysis_*` artifacts or figures, `manuscript_variables.py` exported placeholders, and tests in the same pass. Do not describe a new method step unless it has a config row, an evidence artifact or table, and a gate that can fail. Do not describe a review handoff unless the copied-output surface includes the data, reports, figures, validation results, and copy statistics needed to inspect it.
 
 ```bash
-uv run pytest projects/templates/template_madlib/tests/ --cov=projects/templates/template_madlib/src --cov-fail-under=90
+uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
 ```

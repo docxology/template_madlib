@@ -5,7 +5,7 @@ Tests import project code as `src.<module>` (see `tests/conftest.py`). Do not us
 Coverage must stay at or above 90% for `src/`:
 
 ```bash
-uv run pytest projects/templates/template_madlib/tests/ --cov=projects/templates/template_madlib/src --cov-fail-under=90
+uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
 ```
 
 When adding schema controls, update `tests/helpers.py` and cover both the valid path and at least one malformed input path. Design principles, pipeline phases, evaluation criteria, QA probes, failure modes, authoring obligations, and visualization controls need both table-generation or artifact-generation coverage and malformed-row coverage. When adding manuscript placeholders, update `test_manuscript_variables.py` so unresolved-token checks remain meaningful.

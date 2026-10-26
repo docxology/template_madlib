@@ -156,7 +156,7 @@ the truth of the substituted content itself.
 
 ## Variants
 
-[`template_gold_refinement`](../template_gold_refinement/README.md) is a worked
+[`template_gold_refinement`](https://github.com/docxology/template_gold_refinement) is a worked
 **domain-specialization** of this exemplar. It reuses the same deterministic
 token-injection composition core (`src/composition.py`, `src/config.py`,
 `src/manuscript_variables.py`, and a near-identical `manuscript/config.yaml`
@@ -171,8 +171,8 @@ claim ledger.
 
 - Forward backlog: [`TODO.md`](TODO.md).
 - Copy-and-customize config: [`manuscript/config.yaml.example`](manuscript/config.yaml.example).
-- Project validation: `uv run pytest projects/templates/template_madlib/tests/ --cov=projects/templates/template_madlib/src --cov-fail-under=90`.
-- Repo drift validation: `uv run python scripts/audit/check_template_drift.py --strict`.
+- Project validation: `uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90`.
+- Monorepo-only checks (Stage 02-05 pipeline, `scripts/audit/check_template_drift.py --strict`) run from a [`docxology/template`](https://github.com/docxology/template) checkout.
 
 Output Markdown, PDF, HTML, slides, figures, reports, and copied deliverables are disposable. Regenerate them through Stages 02-05 after source edits; do not hand-edit `output/` artifacts to make a method or documentation claim pass review.
 

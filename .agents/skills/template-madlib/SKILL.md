@@ -9,8 +9,9 @@ tags: [exemplar, madlib, token-injection, imrad]
 
 # template-madlib
 
-Project-scoped skill for the in-repo exemplar at
-`projects/templates/template_madlib/`. Load this when working inside the project.
+Project-scoped skill for this exemplar. In the `docxology/template` monorepo it
+lives at `projects/templates/template_madlib/`; this repository is the standalone
+publication mirror, so the project root is the repository root.
 
 ## When to Use
 
@@ -23,13 +24,14 @@ Project-scoped skill for the in-repo exemplar at
 ## Quick Reference
 
 ```bash
-# From the repository root
-uv run pytest projects/templates/template_madlib/tests --cov=projects/templates/template_madlib/src --cov-fail-under=90
-uv run python scripts/pipeline/stage_02_analysis.py --project templates/template_madlib
-uv run python scripts/pipeline/stage_03_render.py --project templates/template_madlib
-uv run python scripts/pipeline/stage_04_validate.py --project templates/template_madlib
-uv run python scripts/pipeline/stage_05_copy.py --project templates/template_madlib
+# From this repository root (standalone mirror)
+uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
 ```
+
+Stage commands (`scripts/pipeline/stage_02_analysis.py` through
+`stage_05_copy.py --project templates/template_madlib`) require the
+`infrastructure` package from the `docxology/template` monorepo checkout; the
+`scripts/*` wrappers in this mirror import it and do not run standalone.
 
 ## Pitfalls
 
@@ -46,4 +48,4 @@ uv run python scripts/pipeline/stage_05_copy.py --project templates/template_mad
 - Project contract: [`AGENTS.md`](../../../AGENTS.md)
 - README: [`README.md`](../../../README.md)
 - TODO: [`TODO.md`](../../../TODO.md)
-- Exemplar roster: [`projects/AGENTS.md`](../../../../../AGENTS.md)
+- Standalone notes: [`STANDALONE.md`](../../../STANDALONE.md)
