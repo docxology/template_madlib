@@ -26,15 +26,15 @@ This exemplar is useful for protocols, educational scaffolds, review forms, temp
 
 | Claim | Boundary |
 | --- | --- |
-| A Mad Lib manuscript can remain reproducible when the lexicon is treated as data. | Local exemplar claim; no live DOI or standalone release implied. |
-| Conditional IMRAD section bodies can be rendered without shared renderer changes. | Local exemplar claim; no live DOI or standalone release implied. |
-| Large-grain manuscript variables can preserve author-readable source files while still producing a complete manuscript. | Local exemplar claim; no live DOI or standalone release implied. |
-| Token provenance can connect playful lexical substitution to serious publication hygiene. | Local exemplar claim; no live DOI or standalone release implied. |
-| A generated Methods section can be methodologically useful when protocol rows, phases, figures, and validation gates share one config-owned source. | Local exemplar claim; no live DOI or standalone release implied. |
-| Configured-field origin tracking can make loader defaults visible enough for reviewers and downstream forks. | Local exemplar claim; no live DOI or standalone release implied. |
-| Pipeline-owned output regeneration can keep PDF, HTML, slides, data, reports, and copied deliverables aligned without hand-editing generated artifacts. | Local exemplar claim; no live DOI or standalone release implied. |
-| A generated-method exemplar can make review handoff auditable when the review packet includes source config, data artifacts, figures, validation results, and copy statistics. | Local exemplar claim; no live DOI or standalone release implied. |
-| Fork migration guidance can reduce overclaiming when it names the source, test, validator, and evidence surfaces that must change before domain use. | Local exemplar claim; no live DOI or standalone release implied. |
+| A Mad Lib manuscript can remain reproducible when the lexicon is treated as data. | Local exemplar claim; publication status remains config-declared and does not imply empirical validation. |
+| Conditional IMRAD section bodies can be rendered without shared renderer changes. | Local exemplar claim; publication status remains config-declared and does not imply empirical validation. |
+| Large-grain manuscript variables can preserve author-readable source files while still producing a complete manuscript. | Local exemplar claim; publication status remains config-declared and does not imply empirical validation. |
+| Token provenance can connect playful lexical substitution to serious publication hygiene. | Local exemplar claim; publication status remains config-declared and does not imply empirical validation. |
+| A generated Methods section can be methodologically useful when protocol rows, phases, figures, and validation gates share one config-owned source. | Local exemplar claim; publication status remains config-declared and does not imply empirical validation. |
+| Configured-field origin tracking can make loader defaults visible enough for reviewers and downstream forks. | Local exemplar claim; publication status remains config-declared and does not imply empirical validation. |
+| Pipeline-owned output regeneration can keep PDF, HTML, slides, data, reports, and copied deliverables aligned without hand-editing generated artifacts. | Local exemplar claim; publication status remains config-declared and does not imply empirical validation. |
+| A generated-method exemplar can make review handoff auditable when the review packet includes source config, data artifacts, figures, validation results, and copy statistics. | Local exemplar claim; publication status remains config-declared and does not imply empirical validation. |
+| Fork migration guidance can reduce overclaiming when it names the source, test, validator, and evidence surfaces that must change before domain use. | Local exemplar claim; publication status remains config-declared and does not imply empirical validation. |
 
 
 
@@ -48,13 +48,13 @@ The method is conditional section hydration. Each slot combines the seed, slot n
 
 The deterministic digest recipe is deliberately narrow. It does not sample from ambient prose, project history, or renderer state; it uses only the committed seed, the slot declaration, the category name, the ordinal for repeated slots, and the ordered category inventory. A fork can therefore explain a changed token choice as a changed seed, slot, or lexicon row rather than as an opaque generation event.
 
-The first review scenario is declared before generation. The project names its scope as a local exemplar, records enabled sections, keeps DOI and publication claims blank, and treats the copy stage as a review handoff. That ordering matters because a reader should know the allowed claim boundary before inspecting fluent generated text.
+The first review scenario is declared before generation. The project names its scope as a local exemplar, records enabled sections, treats any publication identifiers as metadata rather than method evidence, and treats the copy stage as a review handoff. That ordering matters because a reader should know the allowed claim boundary before inspecting fluent generated text.
 
 The governing constraint is publication claims stay local until release. The source manuscript is intentionally sparse: it contains section titles and large-grain placeholders, not generated claims. The project script first validates the `madlib:` block, expands slots into a `TokenPlan`, builds section bodies, writes artifact JSON, emits a figure registry, and only then writes hydrated Markdown under `output/manuscript/`.
 
 The configured method moves are validate config before composition, declare review scenario and method invariants, separate explicit YAML fields from loader defaults, govern lexicon categories as reviewable data, expand slots through seeded digest selection, allocate slot choices to enabled manuscript sections, compose conditional section bodies, assemble method evidence tables and visual audit figures, align generated claims with the claim ledger, emit evidence artifacts before rendering, verify that no unresolved placeholders remain, assemble a reviewer packet from regenerated artifacts, and preserve human review before publication claims. The protocol sequence is Ingest declared manuscript schema produces `MadlibConfig`; Declare review scenario produces `review scenario`; Track field origin produces `explicit/default path inventory`; Govern lexicon categories produces `validated lexicon`; Construct digest selection material produces `digest input records`; Record selection invariants produces `selection invariant set`; Expand slot declarations produces `TokenPlan`; Apply section conditions produces `enabled section set`; Compose conditional IMRAD bodies produces `section variables`; Assemble evidence tables produces `Markdown evidence tables`; Align claims with evidence ledger produces `claim-aligned evidence surface`; Generate visual audit surface produces `registered figure set`; Emit machine-readable artifacts produces `output/data, output/reports, and output/figures`; Hydrate manuscript shell produces `output/manuscript`; Render and validate deliverables produces `validated project output`; Assemble reviewer packet produces `review packet`; Copy review surface produces `copied publication-review bundle`; Document fork migration produces `fork migration notes`. These steps make the method auditable from three directions: tests inspect the Python behavior, generated artifacts expose the token plan, and manuscript validation confirms that no unresolved placeholder survives into rendered outputs.
 
-The config-origin inventory currently separates 125 explicit YAML path(s) from 11 loader-defaulted path(s). Treating origin as method evidence prevents a rendered field from looking equally authored when it was actually inherited from the loader. The same inventory drives configured-field tables and figures, so reviewers can inspect which schema blocks were intentionally set before judging the generated prose.
+The config-origin inventory currently separates 126 explicit YAML path(s) from 11 loader-defaulted path(s). Treating origin as method evidence prevents a rendered field from looking equally authored when it was actually inherited from the loader. The same inventory drives configured-field tables and figures, so reviewers can inspect which schema blocks were intentionally set before judging the generated prose.
 
 Method invariants are reviewed as their own artifact. Token choices are allowed to change when the seed, slot name, category, ordinal, or ordered category inventory changes; they are not allowed to change because PDF rendering, HTML rendering, file-copy order, or hand-edited output changed. This separates generation logic from presentation logic.
 
@@ -78,7 +78,7 @@ The claim-boundary contract is also generated. The audit-rule list contains 12 r
 
 Fork migration closes the method. A downstream project should update config rows, source-owned composition, validators, claim-ledger entries, and documentation before replacing exemplar vocabulary with domain claims. Without that migration work, the fork has only changed words, not the evidential status of the generated manuscript.
 
-![Deterministic token-injection flow](../figures/token_injection_flow.png){#fig:token-injection-flow}
+![Deterministic token-injection flow](figures/token_injection_flow.png){#fig:token-injection-flow}
 
 ## Design Principles
 
@@ -135,7 +135,7 @@ Fork migration closes the method. A downstream project should update config rows
 | Compose conditional IMRAD bodies | Build large-grain section variables from narrative moves, selected tokens, section switches, and local claim boundaries. | Generated manuscript variables and hydrated output/manuscript Markdown. | `section variables` |
 | Assemble evidence tables | Render method protocol, pipeline phase, design principle, audit rule, token inventory, section plan, and provenance tables from config and TokenPlan. | Composition tests and generated manuscript_variables.json table entries. | `Markdown evidence tables` |
 | Align claims with evidence ledger | Keep generated method, visualization, and publication-boundary claims tied to config, source modules, generated artifacts, or explicit non-claim boundaries. | data/claim_ledger.yaml and evidence registry validation. | `claim-aligned evidence surface` |
-| Generate visual audit surface | Write the cover overview, token-injection flow, section allocation, provenance trace, quality gate, and configured-field figures from generated data. | Nonblank figure tests and ../figures/figure_registry.json. | `registered figure set` |
+| Generate visual audit surface | Write the cover overview, token-injection flow, section allocation, provenance trace, quality gate, and configured-field figures from generated data. | Nonblank figure tests and figures/figure_registry.json. | `registered figure set` |
 | Emit machine-readable artifacts | Write token inventory, section plan, configured-field inventory, injection trace, summary reports, validation inputs, and figure registry. | Artifact-writing tests, artifact manifest, and validation reports. | `output/data, output/reports, and output/figures` |
 | Hydrate manuscript shell | Write manuscript_variables.json and resolve the source Markdown shells into output/manuscript. | Unresolved-token scan and render validation. | `output/manuscript` |
 | Render and validate deliverables | Render PDF, HTML, and slides through shared infrastructure, then validate PDFs, Markdown, figure registry, evidence registry, design overlays, and artifact manifest. | Stage 03 render log and Stage 04 validation report. | `validated project output` |
@@ -192,56 +192,56 @@ The resolved manuscript also demonstrates the intended failure boundary. If a ma
 
 Visualization is enabled for configured_field_matrix, section_configuration_heatmap, field_origin_summary, token_injection_flow, section_token_allocation, provenance_trace_map, quality_gate_matrix. The configured-field figures are generated from the same explicit/default path inventory written to JSON; the pipeline, allocation, provenance, and gate figures are generated from the same token plan and QA schema.
 
-![Token category density](../figures/token_density.png){#fig:token-density}
+![Token category density](figures/token_density.png){#fig:token-density}
 
-![Section token allocation](../figures/section_token_allocation.png){#fig:section-token-allocation}
+![Section token allocation](figures/section_token_allocation.png){#fig:section-token-allocation}
 
-![Provenance trace map](../figures/provenance_trace_map.png){#fig:provenance-trace-map}
+![Provenance trace map](figures/provenance_trace_map.png){#fig:provenance-trace-map}
 
 ## Token Inventory
 
 | Variable | Category | Value | Section | Source |
 | --- | --- | --- | --- | --- |
-| `STUDY_ADJECTIVE` | adjectives | reviewable | abstract | `manuscript/config.yaml#madlib.lexicon.adjectives[5]` |
-| `STUDY_NOUN` | nouns | pipeline | abstract | `manuscript/config.yaml#madlib.lexicon.nouns[4]` |
-| `STUDY_VERB` | verbs | hydrate | abstract | `manuscript/config.yaml#madlib.lexicon.verbs[1]` |
-| `INTRO_NOUNS_1` | nouns | protocol | introduction | `manuscript/config.yaml#madlib.lexicon.nouns[5]` |
-| `INTRO_NOUNS_2` | nouns | section | introduction | `manuscript/config.yaml#madlib.lexicon.nouns[3]` |
-| `INTRO_NOUNS_3` | nouns | lexicon | introduction | `manuscript/config.yaml#madlib.lexicon.nouns[2]` |
-| `INTRO_NOUNS_4` | nouns | artifact | introduction | `manuscript/config.yaml#madlib.lexicon.nouns[6]` |
-| `INTRO_VERBS_1` | verbs | condition | introduction | `manuscript/config.yaml#madlib.lexicon.verbs[3]` |
-| `INTRO_VERBS_2` | verbs | bind | introduction | `manuscript/config.yaml#madlib.lexicon.verbs[6]` |
-| `INTRO_VERBS_3` | verbs | bind | introduction | `manuscript/config.yaml#madlib.lexicon.verbs[6]` |
-| `INTRO_VERBS_4` | verbs | compose | introduction | `manuscript/config.yaml#madlib.lexicon.verbs[0]` |
-| `METHOD_NAME` | methods | conditional section hydration | methods | `manuscript/config.yaml#madlib.lexicon.methods[3]` |
-| `METHOD_CONSTRAINT` | constraints | publication claims stay local until release | methods | `manuscript/config.yaml#madlib.lexicon.constraints[3]` |
-| `METHOD_ARTIFACT_1` | artifacts | token-injection flow | methods | `manuscript/config.yaml#madlib.lexicon.artifacts[6]` |
-| `METHOD_ARTIFACT_2` | artifacts | quality-gate matrix | methods | `manuscript/config.yaml#madlib.lexicon.artifacts[9]` |
-| `METHOD_QUALITY_1` | qualities | claim humility | methods | `manuscript/config.yaml#madlib.lexicon.qualities[4]` |
-| `METHOD_QUALITY_2` | qualities | render readiness | methods | `manuscript/config.yaml#madlib.lexicon.qualities[3]` |
-| `RESULT_MEASURE_1` | measures | provenance coverage | results | `manuscript/config.yaml#madlib.lexicon.measures[3]` |
-| `RESULT_MEASURE_2` | measures | evidence registry cleanliness | results | `manuscript/config.yaml#madlib.lexicon.measures[6]` |
-| `RESULT_MEASURE_3` | measures | category density | results | `manuscript/config.yaml#madlib.lexicon.measures[2]` |
-| `RESULT_ARTIFACT_1` | artifacts | configured-field figures | results | `manuscript/config.yaml#madlib.lexicon.artifacts[10]` |
-| `RESULT_ARTIFACT_2` | artifacts | token inventory | results | `manuscript/config.yaml#madlib.lexicon.artifacts[0]` |
-| `DISCUSSION_ADJECTIVE` | adjectives | auditable | discussion | `manuscript/config.yaml#madlib.lexicon.adjectives[0]` |
-| `DISCUSSION_AUDIENCE_1` | audiences | pipeline maintainers | discussion | `manuscript/config.yaml#madlib.lexicon.audiences[2]` |
-| `DISCUSSION_AUDIENCE_2` | audiences | research educators | discussion | `manuscript/config.yaml#madlib.lexicon.audiences[3]` |
-| `CONFIG_CONSTRAINT` | constraints | disabled sections retain explicit traceability | configuration | `manuscript/config.yaml#madlib.lexicon.constraints[2]` |
-| `EVALUATION_MEASURE_1` | measures | copied output readiness | evaluation | `manuscript/config.yaml#madlib.lexicon.measures[7]` |
-| `EVALUATION_MEASURE_2` | measures | figure registry completeness | evaluation | `manuscript/config.yaml#madlib.lexicon.measures[5]` |
-| `EVALUATION_MEASURE_3` | measures | category density | evaluation | `manuscript/config.yaml#madlib.lexicon.measures[2]` |
-| `EVALUATION_ARTIFACT_1` | artifacts | manuscript variable map | evaluation | `manuscript/config.yaml#madlib.lexicon.artifacts[3]` |
-| `EVALUATION_ARTIFACT_2` | artifacts | provenance trace map | evaluation | `manuscript/config.yaml#madlib.lexicon.artifacts[8]` |
-| `REPRODUCIBILITY_ARTIFACT_1` | artifacts | section plan | reproducibility | `manuscript/config.yaml#madlib.lexicon.artifacts[1]` |
-| `REPRODUCIBILITY_ARTIFACT_2` | artifacts | manuscript variable map | reproducibility | `manuscript/config.yaml#madlib.lexicon.artifacts[3]` |
-| `LIMITATION_FAILURE_1` | failures | domain misuse | limitations | `manuscript/config.yaml#madlib.lexicon.failures[4]` |
-| `LIMITATION_FAILURE_2` | failures | overclaimed generated prose | limitations | `manuscript/config.yaml#madlib.lexicon.failures[1]` |
-| `LIMITATION_FAILURE_3` | failures | figure provenance gap | limitations | `manuscript/config.yaml#madlib.lexicon.failures[3]` |
-| `SCOPE_CONSTRAINT` | constraints | all lexicon entries live in config | scope | `manuscript/config.yaml#madlib.lexicon.constraints[1]` |
-| `SCOPE_AUDIENCE` | audiences | pipeline maintainers | scope | `manuscript/config.yaml#madlib.lexicon.audiences[2]` |
-| `AUTHORING_AUDIENCE` | audiences | manuscript reviewers | authoring_contract | `manuscript/config.yaml#madlib.lexicon.audiences[1]` |
-| `AUTHORING_QUALITY` | qualities | render readiness | authoring_contract | `manuscript/config.yaml#madlib.lexicon.qualities[3]` |
+| `STUDY_ADJECTIVE` | adjectives | reviewable | abstract | `manuscript/config.yaml#madlib.lexicon.adjectives`[5] |
+| `STUDY_NOUN` | nouns | pipeline | abstract | `manuscript/config.yaml#madlib.lexicon.nouns`[4] |
+| `STUDY_VERB` | verbs | hydrate | abstract | `manuscript/config.yaml#madlib.lexicon.verbs`[1] |
+| `INTRO_NOUNS_1` | nouns | protocol | introduction | `manuscript/config.yaml#madlib.lexicon.nouns`[5] |
+| `INTRO_NOUNS_2` | nouns | section | introduction | `manuscript/config.yaml#madlib.lexicon.nouns`[3] |
+| `INTRO_NOUNS_3` | nouns | lexicon | introduction | `manuscript/config.yaml#madlib.lexicon.nouns`[2] |
+| `INTRO_NOUNS_4` | nouns | artifact | introduction | `manuscript/config.yaml#madlib.lexicon.nouns`[6] |
+| `INTRO_VERBS_1` | verbs | condition | introduction | `manuscript/config.yaml#madlib.lexicon.verbs`[3] |
+| `INTRO_VERBS_2` | verbs | bind | introduction | `manuscript/config.yaml#madlib.lexicon.verbs`[6] |
+| `INTRO_VERBS_3` | verbs | bind | introduction | `manuscript/config.yaml#madlib.lexicon.verbs`[6] |
+| `INTRO_VERBS_4` | verbs | compose | introduction | `manuscript/config.yaml#madlib.lexicon.verbs`[0] |
+| `METHOD_NAME` | methods | conditional section hydration | methods | `manuscript/config.yaml#madlib.lexicon.methods`[3] |
+| `METHOD_CONSTRAINT` | constraints | publication claims stay local until release | methods | `manuscript/config.yaml#madlib.lexicon.constraints`[3] |
+| `METHOD_ARTIFACT_1` | artifacts | token-injection flow | methods | `manuscript/config.yaml#madlib.lexicon.artifacts`[6] |
+| `METHOD_ARTIFACT_2` | artifacts | quality-gate matrix | methods | `manuscript/config.yaml#madlib.lexicon.artifacts`[9] |
+| `METHOD_QUALITY_1` | qualities | claim humility | methods | `manuscript/config.yaml#madlib.lexicon.qualities`[4] |
+| `METHOD_QUALITY_2` | qualities | render readiness | methods | `manuscript/config.yaml#madlib.lexicon.qualities`[3] |
+| `RESULT_MEASURE_1` | measures | provenance coverage | results | `manuscript/config.yaml#madlib.lexicon.measures`[3] |
+| `RESULT_MEASURE_2` | measures | evidence registry cleanliness | results | `manuscript/config.yaml#madlib.lexicon.measures`[6] |
+| `RESULT_MEASURE_3` | measures | category density | results | `manuscript/config.yaml#madlib.lexicon.measures`[2] |
+| `RESULT_ARTIFACT_1` | artifacts | configured-field figures | results | `manuscript/config.yaml#madlib.lexicon.artifacts`[10] |
+| `RESULT_ARTIFACT_2` | artifacts | token inventory | results | `manuscript/config.yaml#madlib.lexicon.artifacts`[0] |
+| `DISCUSSION_ADJECTIVE` | adjectives | auditable | discussion | `manuscript/config.yaml#madlib.lexicon.adjectives`[0] |
+| `DISCUSSION_AUDIENCE_1` | audiences | pipeline maintainers | discussion | `manuscript/config.yaml#madlib.lexicon.audiences`[2] |
+| `DISCUSSION_AUDIENCE_2` | audiences | research educators | discussion | `manuscript/config.yaml#madlib.lexicon.audiences`[3] |
+| `CONFIG_CONSTRAINT` | constraints | disabled sections retain explicit traceability | configuration | `manuscript/config.yaml#madlib.lexicon.constraints`[2] |
+| `EVALUATION_MEASURE_1` | measures | copied output readiness | evaluation | `manuscript/config.yaml#madlib.lexicon.measures`[7] |
+| `EVALUATION_MEASURE_2` | measures | figure registry completeness | evaluation | `manuscript/config.yaml#madlib.lexicon.measures`[5] |
+| `EVALUATION_MEASURE_3` | measures | category density | evaluation | `manuscript/config.yaml#madlib.lexicon.measures`[2] |
+| `EVALUATION_ARTIFACT_1` | artifacts | manuscript variable map | evaluation | `manuscript/config.yaml#madlib.lexicon.artifacts`[3] |
+| `EVALUATION_ARTIFACT_2` | artifacts | provenance trace map | evaluation | `manuscript/config.yaml#madlib.lexicon.artifacts`[8] |
+| `REPRODUCIBILITY_ARTIFACT_1` | artifacts | section plan | reproducibility | `manuscript/config.yaml#madlib.lexicon.artifacts`[1] |
+| `REPRODUCIBILITY_ARTIFACT_2` | artifacts | manuscript variable map | reproducibility | `manuscript/config.yaml#madlib.lexicon.artifacts`[3] |
+| `LIMITATION_FAILURE_1` | failures | domain misuse | limitations | `manuscript/config.yaml#madlib.lexicon.failures`[4] |
+| `LIMITATION_FAILURE_2` | failures | overclaimed generated prose | limitations | `manuscript/config.yaml#madlib.lexicon.failures`[1] |
+| `LIMITATION_FAILURE_3` | failures | figure provenance gap | limitations | `manuscript/config.yaml#madlib.lexicon.failures`[3] |
+| `SCOPE_CONSTRAINT` | constraints | all lexicon entries live in config | scope | `manuscript/config.yaml#madlib.lexicon.constraints`[1] |
+| `SCOPE_AUDIENCE` | audiences | pipeline maintainers | scope | `manuscript/config.yaml#madlib.lexicon.audiences`[2] |
+| `AUTHORING_AUDIENCE` | audiences | manuscript reviewers | authoring_contract | `manuscript/config.yaml#madlib.lexicon.audiences`[1] |
+| `AUTHORING_QUALITY` | qualities | render readiness | authoring_contract | `manuscript/config.yaml#madlib.lexicon.qualities`[3] |
 
 ## Provenance Matrix
 
@@ -287,13 +287,13 @@ Configuration owns more than vocabulary. It also owns section titles, narrative 
 
 The tables in this section expose the declared surface that controls rendering. They are useful during review because a title change, slot expansion, or disabled section appears as a small config diff and a regenerated artifact diff rather than as scattered prose edits.
 
-The configured-field inventory separates 125 explicit YAML path(s) from 11 loader-defaulted path(s). That distinction matters for forks: a field that appears in the rendered manuscript may be intentionally authored in `config.yaml`, or it may be a documented default inherited from the template.
+The configured-field inventory separates 126 explicit YAML path(s) from 11 loader-defaulted path(s). That distinction matters for forks: a field that appears in the rendered manuscript may be intentionally authored in `config.yaml`, or it may be a documented default inherited from the template.
 
-![Configured field origin matrix](../figures/configured_field_matrix.png){#fig:configured-field-matrix}
+![Configured field origin matrix](figures/configured_field_matrix.png){#fig:configured-field-matrix}
 
-![Section configuration heatmap](../figures/section_configuration_heatmap.png){#fig:section-configuration-heatmap}
+![Section configuration heatmap](figures/section_configuration_heatmap.png){#fig:section-configuration-heatmap}
 
-![Field origin summary](../figures/field_origin_summary.png){#fig:field-origin-summary}
+![Field origin summary](figures/field_origin_summary.png){#fig:field-origin-summary}
 
 ## Declared Section Titles
 
@@ -324,7 +324,7 @@ The configured-field inventory separates 125 explicit YAML path(s) from 11 loade
 - Pipeline phases: `17`
 - Quality probes: `14`
 - Authoring obligations: `8`
-- Explicit configured paths: `125`
+- Explicit configured paths: `126`
 - Defaulted configured paths: `11`
 - Enabled visualization flags: `7`
 - Section-level configured paths: `33`
@@ -338,15 +338,15 @@ The configured-field inventory separates 125 explicit YAML path(s) from 11 loade
 
 | Measure | Count |
 | --- | ---: |
-| Total tracked field paths | 136 |
-| Explicit YAML paths | 125 |
+| Total tracked field paths | 137 |
+| Explicit YAML paths | 126 |
 | Loader-defaulted paths | 11 |
 | Enabled visualization flags | 7 |
 | Section-level paths | 33 |
 | Lexicon-level paths | 10 |
 | Slot-level paths | 66 |
 | Visualization-control paths | 9 |
-| Top-level schema paths | 18 |
+| Top-level schema paths | 19 |
 
 ## Configured Field Inventory
 
@@ -387,6 +387,7 @@ The configured-field inventory separates 125 explicit YAML path(s) from 11 loade
 | `madlib.narrative_moves.scope` | explicit | section | 4 moves |
 | `madlib.pipeline_phases` | explicit | schema | 17 entries |
 | `madlib.quality_probes` | explicit | schema | 14 entries |
+| `madlib.schema_version` | explicit | schema | configured field |
 | `madlib.section_conditions` | explicit | schema | configured field |
 | `madlib.section_conditions.abstract` | explicit | section | enabled |
 | `madlib.section_conditions.authoring_contract` | explicit | section | enabled |
@@ -501,11 +502,11 @@ The evaluation section is configured to name readiness criteria, connect criteri
 
 The active criteria use analysis, copy, pytest, validation as gate labels and inspect artifacts such as token-injection flow, quality-gate matrix, configured-field figures. A passing run means the exemplar is locally render-ready: placeholders resolve, token provenance is present, figure references are registered, evidence scanning has not found unsupported numbers, and project design overlays remain internally consistent.
 
-That readiness is deliberately narrower than publication readiness. A local pass does not imply a standalone DOI, external release, reader preference result, or empirical validation. It means the tracked project tree can regenerate the committed artifact surface through its declared pipeline.
+That readiness is deliberately narrower than publication readiness. A local pass does not imply reader-preference results or empirical validation. It means the tracked project tree can regenerate the committed artifact surface through its declared pipeline.
 
 The QA probes are Method row completeness, Field-origin visibility, Placeholder survival, Provenance completeness, Section-switch observability, Figure registry coverage, Method-figure alignment, Evidence cleanliness, Fork readiness, Copied-output parity, Digest invariant review, Claim-ledger alignment, Review packet completeness, Fork migration sufficiency. They are phrased as questions so they can be reused by reviewers and by forks of the exemplar: did the placeholder disappear, did the provenance survive, did the figure registry cover every reference, and did copied outputs preserve the same evidence surface that validation inspected?
 
-![Quality gate matrix](../figures/quality_gate_matrix.png){#fig:quality-gate-matrix}
+![Quality gate matrix](figures/quality_gate_matrix.png){#fig:quality-gate-matrix}
 
 ## Evaluation Criteria
 
@@ -513,9 +514,9 @@ The QA probes are Method row completeness, Field-origin visibility, Placeholder 
 | --- | --- | --- | --- |
 | Placeholder resolution | No unresolved uppercase manuscript placeholders remain in output/manuscript or rendered web output. | tests/test_manuscript_variables.py and rg unresolved-token scan. | `pytest` |
 | Token provenance coverage | Every selected token maps to category, selected value, section, and config pointer. | output/reports/injection_trace.json and output/data/token_inventory.json. | `analysis` |
-| Figure registry integrity | Every referenced figure label is present in ../figures/figure_registry.json. | scripts/04_validate_output.py figure registry check. | `validation` |
+| Figure registry integrity | Every referenced figure label is present in figures/figure_registry.json. | scripts/pipeline/stage_04_validate.py figure registry check. | `validation` |
 | Evidence registry cleanliness | Generated manuscript numbers and claims pass the project evidence registry. | output/reports/evidence_registry.json. | `validation` |
-| Copied-output readiness | PDF, HTML, slides, figures, data, and reports copy into output/templates/template_madlib. | scripts/05_copy_outputs.py output statistics. | `copy` |
+| Copied-output readiness | PDF, HTML, slides, figures, data, and reports copy into output/templates/template_madlib. | scripts/pipeline/stage_05_copy.py output statistics. | `copy` |
 | Reviewer packet completeness | Hydrated Markdown, rendered PDF, web output, slides, figures, data, reports, validation results, and copy statistics are all present for review. | Stage 04 validation report and Stage 05 output_statistics.json. | `copy` |
 | Method-invariant traceability | Token choices can be explained only by seed, slot, category, ordinal, and ordered category inventory. | tests/test_tokens.py and generated Methods digest prose. | `pytest` |
 
@@ -528,12 +529,12 @@ The QA probes are Method row completeness, Field-origin visibility, Placeholder 
 | Placeholder survival | Did any source token survive hydration? | No uppercase placeholders are found in generated manuscript or web files. | `output/manuscript and output/web` |
 | Provenance completeness | Can every selected token be traced to a category, section, value, and config key? | The injection trace and token inventory contain one row for each generated token. | `output/reports/injection_trace.json` |
 | Section-switch observability | Does a disabled section resolve to a visible explanation? | Disabled section bodies cite their controlling section condition. | `output/data/section_plan.json` |
-| Figure registry coverage | Does every manuscript figure reference have a generated registry entry? | Figure registry validation passes. | `../figures/figure_registry.json` |
+| Figure registry coverage | Does every manuscript figure reference have a generated registry entry? | Figure registry validation passes. | `figures/figure_registry.json` |
 | Method-figure alignment | Do method figures describe generated data rather than decorative or unsupported claims? | Figure registry captions, nonblank PNG tests, and manual visual QA align with artifact data. | `output/figures` |
 | Evidence cleanliness | Do generated claims stay within local evidence boundaries? | Evidence registry validation passes without unsupported claims. | `output/reports/evidence_registry.json` |
 | Fork readiness | Does the authoring contract tell downstream forks what to extend before adding domain claims? | Authoring obligations cite config diffs, claim ledger updates, validators, and full reruns. | `output/manuscript/10_authoring_contract.md` |
 | Copied-output parity | Did copied deliverables preserve the validated project output surface? | Copy-stage statistics include PDF, HTML, slides, figures, data, and reports. | `output/templates/template_madlib` |
-| Digest invariant review | Are the allowed token-selection inputs documented and protected by tests? | Methods prose names the digest inputs and token tests prove seed/category sensitivity. | `src/tokens.py and output/manuscript/02_methodology.md` |
+| Digest invariant review | Are the allowed token-selection inputs documented and protected by tests? | Methods prose names the digest inputs and token tests prove seed/category sensitivity. | `src/template_madlib/tokens.py and output/manuscript/02_methodology.md` |
 | Claim-ledger alignment | Do method and documentation claims point to config, source, generated artifacts, or explicit non-claim boundaries? | Claim-ledger rows cover expanded method protocol and fork-validator boundaries. | `data/claim_ledger.yaml` |
 | Review packet completeness | Can a reviewer inspect every output surface needed to audit the method? | Copied outputs include manuscript, web, slides, figures, data, reports, validation, and copy statistics. | `output/templates/template_madlib and output/reports/output_statistics.json` |
 | Fork migration sufficiency | Does the documentation tell forks which surfaces to change before adding domain claims? | README, STANDALONE, manuscript README, and Authoring Contract list config, source, test, validator, and claim-ledger obligations. | `README.md, STANDALONE.md, manuscript/README.md, and output/manuscript/10_authoring_contract.md` |
@@ -552,9 +553,11 @@ The protocol emits MadlibConfig, review scenario, explicit/default path inventor
 
 The copied root output is therefore a consequence of local source and config. Generated files remain disposable; the durable contract is the ability to regenerate them from the tracked project tree and to observe the same validation gates passing.
 
-- Config hash: `3c4268ae54c35130`
-- Generated: `2026-06-26T14:00:22Z`
-- Python: `3.12.13`
+- Config hash: `4414bd1d041a65a2`
+- Generated: `2026-10-29T21:56:17Z` (derived from `SOURCE_DATE_EPOCH`; an
+  explicit `not-recorded` marker is emitted when the reproducible timestamp is
+  not supplied)
+- Python: `3.14.9`
 - Platform: `Darwin arm64`
 
 
@@ -575,7 +578,7 @@ The author remains responsible for theory, citations, reader expectations, and d
 
 | Failure mode | Risk | Detection | Mitigation |
 | --- | --- | --- | --- |
-| Unresolved placeholder | A source Markdown token is added without a generated variable. | Project test scans output/manuscript and rendered web output for uppercase placeholders. | Add variable generation, tests, and rerun z_generate_manuscript_variables.py before render. |
+| Unresolved placeholder | A source Markdown token is added without a generated variable. | Project test scans output/manuscript and rendered web output for uppercase placeholders. | Add variable generation, tests, and rerun `z_generate_manuscript_variables.py` before render. |
 | Overclaimed generated prose | Generated text implies a standalone DOI, empirical validation, or external release that does not exist. | Claim ledger review, publication metadata review, and evidence registry validation. | Keep publication fields blank and use local-only claim boundaries until evidence exists. |
 | Config-source drift | Documentation names a schema feature that source code no longer parses. | Config tests instantiate the schema and docs point to generated tables. | Update config loader, docs, and tests together. |
 | Figure provenance gap | A figure is referenced in manuscript output without a registry entry. | Stage 04 figure registry validation. | Emit figure_registry.json from src.analysis before rendering. |
@@ -584,7 +587,7 @@ The author remains responsible for theory, citations, reader expectations, and d
 | Field-origin opacity | A rendered field appears configured even though it came from a loader default. | configured_field_inventory.json and configured-field summary figures. | Expose explicit/default counts in the manuscript and review optional defaults before release. |
 | Visual-method mismatch | A figure implies a method claim that is not backed by generated data or registry metadata. | Figure registry validation, nonblank figure tests, and manual visual QA. | Generate figures only from config, TokenPlan, and inventory data, then rerun validation. |
 | Fork without validators | A downstream project changes vocabulary or claims but keeps only the exemplar's generic gates. | Authoring contract review and claim ledger review. | Add domain validators, domain evidence artifacts, and claim-ledger entries before asserting domain findings. |
-| Digest invariant drift | A future edit lets renderer state, file order, or ambient prose influence token selection. | Seed-stability, category-sensitivity, and method-invariant tests. | Keep token selection isolated in src/tokens.py and document allowed digest inputs in Methods. |
+| Digest invariant drift | A future edit lets renderer state, file order, or ambient prose influence token selection. | Seed-stability, category-sensitivity, and method-invariant tests. | Keep token selection isolated in src/template_madlib/tokens.py and document allowed digest inputs in Methods. |
 | Claim ledger omission | A generated claim appears in prose or documentation without a matching local evidence row or non-claim boundary. | Claim ledger review, evidence registry validation, and documentation review. | Add claim-ledger rows or remove the unsupported claim before rendering copied outputs. |
 | Review packet incompleteness | A reviewer receives PDF or HTML without the data, reports, figures, validation output, or copy statistics needed to inspect the method. | Stage 05 output statistics and copied-output validation. | Regenerate Stages 02-05 and include the full copied output surface in review. |
 | Fork migration ambiguity | A fork leaves authors unsure which exemplar surfaces must change for a domain-specific manuscript. | README, STANDALONE notes, manuscript README, and Authoring Contract review. | Document required config, source, test, claim-ledger, validator, and pipeline changes before making domain claims. |
@@ -601,7 +604,7 @@ The exemplar is a pipeline testbed, not a natural-language quality benchmark. It
 
 The configured scope moves are distinguish generation from truth, limit publication claims, point to local evidence, and explain responsible forking. The closest related systems are not general-purpose chatbots but source-owned report generators, literate-programming documents, static-site data templates, and reproducible manuscript pipelines. `template_madlib` contributes a deliberately small version of that idea for research manuscripts.
 
-Publication metadata remains conservative. The local `CITATION.cff`, `.zenodo.json`, and `codemeta.json` describe this exemplar inside the shared template repository; they do not claim a live standalone DOI, external release, or empirical validation outside the generated local artifacts.
+Publication metadata remains bounded. The local `CITATION.cff`, `.zenodo.json`, and `codemeta.json` record the declared repository and deposited identifiers when present, but those metadata do not turn the generated manuscript into empirical validation or reader-quality evidence.
 
 
 
@@ -626,7 +629,7 @@ The quality standard is claim humility. A fork that only changes words has not p
 | Extend claim evidence | Update the claim ledger when generated prose adds a new claim boundary. | `data/claim_ledger.yaml` |
 | Add domain validators | Add tests and validation artifacts before using the template for domain-specific claims. | `tests and output/reports` |
 | Rerun the full project path | Regenerate analysis artifacts, render outputs, validate outputs, and copy deliverables. | `pipeline command logs` |
-| Review method invariants | Confirm changed tokens are explained only by seed, slot, category, ordinal, or category inventory changes. | `src/tokens.py, token_inventory.json, and output/manuscript/02_methodology.md` |
+| Review method invariants | Confirm changed tokens are explained only by seed, slot, category, ordinal, or category inventory changes. | `src/template_madlib/tokens.py, token_inventory.json, and output/manuscript/02_methodology.md` |
 | Assemble reviewer packet | Provide hydrated manuscript, rendered outputs, figures, data, reports, validation report, and output statistics together. | `output/templates/template_madlib` |
 | Write fork migration notes | Document config, source, test, validator, and claim-ledger changes required by a domain fork. | `README.md, STANDALONE.md, and data/claim_ledger.yaml` |
 
