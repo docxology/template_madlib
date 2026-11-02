@@ -10,7 +10,7 @@ description = "Deterministic token-injection exemplar for conditional IMRAD manu
 authors = [
     {name = "Daniel Ari Friedman", email = "daniel@activeinference.institute"}
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "matplotlib>=3.7.0",
     "pillow>=12.3.0",
