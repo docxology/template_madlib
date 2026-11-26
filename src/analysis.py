@@ -35,12 +35,14 @@ def generate_artifacts(project_root: Path | str) -> dict[str, Path]:
             "Configuration-to-manuscript audit overview for the Madlib exemplar",
             "fig:madlib-cover-overview",
             "Cover",
+            alt_text="Overview of the Madlib exemplar showing configured fields, token selection, and quality checks.",
         ),
         "fig:token-density": _figure_registry_entry(
             figure.name,
             "Token choices by lexicon category",
             "fig:token-density",
             "Results",
+            alt_text="Bar chart showing how many token choices come from each lexicon category.",
         ),
     }
     conditional_registry = write_conditional_figures(

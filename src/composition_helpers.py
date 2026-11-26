@@ -8,7 +8,7 @@ from .config import MethodStep, PipelinePhase
 def _disabled_section_body(section: str) -> str:
     return "\n\n".join(
         [
-            (f"This section is disabled by `madlib.section_conditions.{section}` in `manuscript/config.yaml`."),
+            (f"This section is disabled by `madlib.section_conditions.{section}` in the manuscript configuration."),
             (
                 "The placeholder still resolves so reviewers can distinguish an intentionally disabled section "
                 "from a missing generation step."

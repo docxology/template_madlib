@@ -9,12 +9,13 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(REPO_ROOT))
 
+from infrastructure.core.project_paths import resolve_source_manuscript_dir  # noqa: E402
 from infrastructure.rendering.preflight import run_manuscript_preflight  # noqa: E402
 
 
 def main() -> int:
     """CLI entry point."""
-    manuscript_dir = Path(__file__).resolve().parent.parent / "manuscript"
+    manuscript_dir = resolve_source_manuscript_dir(Path(__file__).resolve().parent.parent)
     ok, message = run_manuscript_preflight(manuscript_dir)
     if ok:
         return 0

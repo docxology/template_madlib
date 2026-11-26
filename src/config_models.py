@@ -255,6 +255,7 @@ class MadlibConfig:
     audit_rules: tuple[str, ...]
     contribution_claims: tuple[str, ...]
     config_path: Path
+    config_source: str = "manuscript/config.yaml"
 
     @property
     def enabled_sections(self) -> tuple[str, ...]:

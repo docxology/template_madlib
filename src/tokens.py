@@ -103,7 +103,7 @@ def generate_token_plan(config: MadlibConfig) -> TokenPlan:
                     value=value,
                     section=slot.section,
                     ordinal=ordinal,
-                    source_key=f"manuscript/config.yaml#madlib.lexicon.{slot.category}[{index}]",
+                    source_key=f"{config.config_source}#madlib.lexicon.{slot.category}[{index}]",
                 )
             )
     return TokenPlan(seed=config.seed, choices=tuple(choices))
@@ -125,7 +125,7 @@ def _choose_value(config: MadlibConfig, slot: SlotSpec, ordinal: int) -> tuple[s
     — only that slot's own inputs affect its own digest, so token plans
     never silently shift when the config grows. Returns both the chosen
     value and its lexicon index so callers (e.g. `generate_token_plan`) can
-    record a precise `source_key` back to `manuscript/config.yaml`.
+    record a precise `source_key` back to the resolved manuscript config.
     """
     values = config.lexicon[slot.category]
     digest_input = "|".join(

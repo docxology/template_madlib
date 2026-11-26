@@ -41,7 +41,10 @@ class MadlibConfigError(ValueError):
 def load_madlib_config(project_root: Path | str) -> MadlibConfig:
     """Load madlib config from a file."""
     root = Path(project_root)
-    config_path = root / "manuscript" / "config.yaml"
+    config_path = root / "docs" / "manuscript" / "config.yaml"
+    legacy_path = root / "manuscript" / "config.yaml"
+    if not config_path.is_file() and legacy_path.is_file():
+        config_path = legacy_path
     if not config_path.is_file():
         raise MadlibConfigError(f"Missing manuscript config: {config_path}")
 
@@ -114,6 +117,7 @@ def load_madlib_config(project_root: Path | str) -> MadlibConfig:
             ),
         ),
         config_path=config_path,
+        config_source=config_path.relative_to(root).as_posix(),
     )
 
 

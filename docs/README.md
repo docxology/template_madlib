@@ -1,14 +1,16 @@
-# Documentation
+# Madlib documentation
 
-See:
-
-- `../README.md` for usage, generated evidence, and exemplar positioning.
-- `../AGENTS.md` for editing rules.
-- `../manuscript/README.md` for Madlib schema, design principles, pipeline phases, evaluation criteria, QA probes, failure modes, authoring obligations, cover/figure controls, configured-field origins, and token-shell rules.
-- `../src/README.md` for module responsibilities.
-- `../tests/README.md` for verification coverage.
-- `../data/claim_ledger.yaml` for local method, visualization, and publication-boundary claims.
-
-Generated documentation outputs belong under `output/`; keep durable Madlib behavior documented in tracked source docs. If a doc describes a method step, make sure the step is also declared in `manuscript/config.yaml`, implemented in `src/`, covered by tests, and regenerated through Stages 02-05.
-
-Review-packet, digest-invariant, claim-ledger, and fork-migration language should be documented through the same source path: config rows, generated Methods prose, claim ledger, and tests. Do not describe those obligations only in a freeform doc.
+- [Quick start](quickstart.md) installs the locked environment and shows
+  how to inspect the token generator.
+- [Architecture](architecture.md) describes the configuration, local
+  computation, and script boundaries.
+- [Authoring and review workflow](workflow.md) explains method rows,
+  evidence files, token invariants, and the review packet.
+- [Forking](forking.md) lists the changes a new project needs.
+- [Manuscript source and render instructions](manuscript/README.md) covers
+  source tokens, the pinned pipeline, and rendered outputs.
+- [Testing philosophy](testing_philosophy.md),
+  [troubleshooting](troubleshooting.md), and
+  [agent instructions](agent_instructions.md) cover maintenance.
+- [Claim ledger](../data/claim_ledger.yaml) identifies the source and
+  limits of claims made by this exemplar.

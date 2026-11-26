@@ -25,7 +25,7 @@ publication mirror, so the project root is the repository root.
 
 ```bash
 # From this repository root (standalone mirror)
-uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
+uv run --locked --extra dev pytest tests/ --cov=src --cov-fail-under=90
 ```
 
 Stage commands (`scripts/pipeline/stage_02_analysis.py` through

@@ -79,9 +79,8 @@ TOKEN_ROW_REQUIRED_KEYS: tuple[str, ...] = (
     "ordinal",
     "source_key",
 )
-TOKEN_SOURCE_KEY_PREFIX = "manuscript/config.yaml#madlib.lexicon."
 PLACEHOLDER_PATTERN = re.compile(r"\{\{[A-Z0-9_]+\}\}")
-FIGURE_REF_PATTERN = re.compile(r"\]\((\.\./output/figures/([^)#]+))\)")
+FIGURE_REF_PATTERN = re.compile(r"\]\((\.\./(?:output/)?figures/([^)#]+))\)")
 
 
 @dataclass(frozen=True)
@@ -132,7 +131,7 @@ def validate_generated_outputs(
 ) -> OutputValidationResult:
     """Validate the regenerated project-owned outputs against source.
 
-    Loads ``manuscript/config.yaml`` (unless injected), then checks hydrated
+    Loads the resolved manuscript configuration (unless injected), then checks hydrated
     placeholders, token provenance, figure-registry coverage, configured-field
     origins, the declared artifact inventory, the authoring-contract surface,
     and the manuscript-variable binding. Returns an
@@ -145,7 +144,7 @@ def validate_generated_outputs(
         try:
             config = load_madlib_config(root)
         except MadlibConfigError as exc:
-            _issue(result, "config-load", f"manuscript/config.yaml failed to load: {exc}")
+            _issue(result, "config-load", f"Manuscript configuration failed to load: {exc}")
             return result
 
     data_dir = root / "output" / "data"
@@ -211,10 +210,11 @@ def _validate_token_provenance(
     )
     if bad_sections:
         _issue(result, "token-section-unknown", "token rows name unknown sections: " + ", ".join(bad_sections))
+    source_prefix = f"{config.config_source}#madlib.lexicon."
     bad_sources = [
         row["variable_name"]
         for row in rows
-        if isinstance(row, dict) and not str(row.get("source_key", "")).startswith(TOKEN_SOURCE_KEY_PREFIX)
+        if isinstance(row, dict) and not str(row.get("source_key", "")).startswith(source_prefix)
     ]
     if bad_sources:
         _issue(

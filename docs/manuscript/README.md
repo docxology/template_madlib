@@ -1,6 +1,6 @@
 # Manuscript
 
-The manuscript directory is intentionally sparse. Numbered Markdown files carry section shells and large-grain placeholders such as `{{METHODS_BODY}}`, `{{METHOD_PROTOCOL_TABLE}}`, and `{{TITLE_RESULTS}}`. The actual content is generated from `manuscript/config.yaml` plus `src/` logic.
+The manuscript directory is intentionally sparse. Numbered Markdown files carry section shells and large-grain placeholders such as `{{METHODS_BODY}}`, `{{METHOD_PROTOCOL_TABLE}}`, and `{{TITLE_RESULTS}}`. The actual content is generated from `docs/manuscript/config.yaml` plus `src/` logic.
 
 Important config blocks:
 
@@ -34,9 +34,44 @@ Method review has three additional obligations:
 - Claim-ledger alignment must travel with prose: a method or domain claim needs a local evidence row, external evidence, or an explicit non-claim boundary.
 - Review-packet handoff must include hydrated Markdown, PDF, web output, slides, figures, data, reports, validation results, and copy statistics together.
 
-Run hydration from the `docxology/template` monorepo checkout when editing manuscript placeholders (the script imports `infrastructure.*`, so it does not run in this standalone mirror):
+## Render and validate this checkout
+
+Use a clean commit from this repository. Install Git, uv, Pandoc 3.14,
+XeLaTeX, and the PDF and Beamer dependencies from the template's
+[setup guide](https://github.com/docxology/template/blob/87704feae0a4490ef7dad9c931d268e8c30273c2/docs/guides/startup-and-setup.md).
+The preamble uses JuliaMono. Install the font faces and make the directory
+available to TeX through its font search path or `TTFONTS`.
+
+Run from the standalone project root. The working project is a physical
+checkout so the pinned runner can supervise token hydration. Move the
+tracked release snapshot aside in this disposable checkout so the build
+validates only freshly generated output.
 
 ```bash
-uv run python projects/templates/template_madlib/scripts/z_generate_manuscript_variables.py
-rg "\\{\\{" projects/templates/template_madlib/output/manuscript
+madlib_source="$(pwd -P)"
+render_workspace="$(mktemp -d)"
+renderer_checkout="$render_workspace/template"
+git clone https://github.com/docxology/template.git "$renderer_checkout"
+git -C "$renderer_checkout" checkout --detach 87704feae0a4490ef7dad9c931d268e8c30273c2
+mkdir -p "$renderer_checkout/projects/working"
+git clone "$madlib_source" "$renderer_checkout/projects/working/template_madlib"
+
+cd "$renderer_checkout/projects/working/template_madlib"
+mv output "$render_workspace/previous-output"
+uv sync --locked --extra dev --python 3.14
+uv run --no-sync --python 3.14 pytest tests/ --cov=src --cov-fail-under=90
+
+cd "$renderer_checkout"
+uv sync --locked
+uv run --no-sync python scripts/pipeline/stage_02_analysis.py --project working/template_madlib
+uv run --no-sync python scripts/pipeline/stage_03_render.py --project working/template_madlib
+uv run --no-sync python scripts/pipeline/stage_04_validate.py --project working/template_madlib
 ```
+
+Stage 02 generates the token inventory, hydrated manuscript, figure
+registry, and project output-validation receipt. The combined descriptive
+PDF is `output/pdf/template_madlib_combined.pdf`; the HTML and slides are
+in `output/web/` and `output/slides/`. Inspect
+`output/reports/validation_report.md` and `output/reports/rendered_provenance.json`
+for the shared validation and source bindings. Run Stage 05 from the
+renderer when a copied review bundle and copy statistics are needed.

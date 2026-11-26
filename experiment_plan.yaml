@@ -36,7 +36,7 @@ metrics:
   primary:
     name: provenance_coverage
     direction: maximize
-protocol: "Run deterministic token planning from manuscript/config.yaml, write artifacts, hydrate manuscript variables, verify method protocol, pipeline phase, design-principle, QA-probe, failure-mode, audit-rule, contribution-claim, authoring-obligation, configured-field, digest-invariant, review-packet, fork-migration, cover, pipeline-visualization, and title variables, render, copy, and confirm no unresolved tokens remain."
+protocol: "Run deterministic token planning from docs/manuscript/config.yaml, write artifacts, hydrate manuscript variables, verify method protocol, pipeline phase, design-principle, QA-probe, failure-mode, audit-rule, contribution-claim, authoring-obligation, configured-field, digest-invariant, review-packet, fork-migration, cover, pipeline-visualization, and title variables, render, copy, and confirm no unresolved tokens remain."
 expected_figures:
   - fig:madlib-cover-overview
   - fig:token-density

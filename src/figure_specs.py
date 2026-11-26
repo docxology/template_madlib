@@ -154,6 +154,7 @@ def write_conditional_figures(run: FigureRun, artifact_paths: dict[str, Path]) -
             spec.caption,
             spec.label,
             spec.section,
+            alt_text=spec.alt,
         )
     return registry
 
@@ -188,4 +189,5 @@ def build_group_figure_markdown(config: MadlibConfig, group: str, *, disabled_me
 
 
 def _figure_markdown(alt: str, filename: str, label: str) -> str:
+    # Shared hydration rebases this generated target to ../figures/.
     return f"![{alt}](../output/figures/{filename}){{#{label}}}"
