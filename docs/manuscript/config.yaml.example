@@ -19,6 +19,8 @@ keywords:
   - "token injection"
   - "conditional manuscripts"
 
+manuscript_dir: "docs/manuscript"
+
 render:
   formats:
     pdf: true
@@ -114,7 +116,7 @@ madlib:
       - "document fork migration notes"
   method_protocol:
     - name: "Ingest declared manuscript schema"
-      action: "Parse manuscript/config.yaml and validate madlib blocks before composition."
+      action: "Parse docs/manuscript/config.yaml and validate madlib blocks before composition."
       evidence: "Config validation tests."
       output: "MadlibConfig"
     - name: "Declare review scenario"
@@ -194,7 +196,7 @@ madlib:
       manuscript_effect: "Data, reports, figures, validation, and copy statistics travel with the manuscript."
   pipeline_phases:
     - name: "Schema parse"
-      input_artifact: "manuscript/config.yaml"
+      input_artifact: "docs/manuscript/config.yaml"
       transformation: "Load and validate the madlib schema."
       output_artifact: "MadlibConfig"
       guard: "config parser tests"
@@ -231,7 +233,7 @@ madlib:
     - name: "Method completeness"
       question: "Do method protocol rows cover schema intake, token planning, artifacts, rendering, and review?"
       passing_signal: "Protocol and phase tables contain the expected method responsibilities."
-      artifact: "manuscript/config.yaml"
+      artifact: "docs/manuscript/config.yaml"
     - name: "Provenance completeness"
       question: "Can every selected token be traced to config?"
       passing_signal: "The injection trace and token inventory contain one row for each generated token."

@@ -66,7 +66,7 @@ def test_generate_variables_contains_sections_tables_and_provenance_tokens() -> 
 def test_all_manuscript_tokens_are_generated() -> None:
     variables = generate_variables(PROJECT_ROOT)
     found: set[str] = set()
-    for path in (PROJECT_ROOT / "manuscript").glob("*.md"):
+    for path in (PROJECT_ROOT / "docs" / "manuscript").glob("*.md"):
         if path.name in DOC_ONLY:
             continue
         found.update(TOKEN_RE.findall(path.read_text(encoding="utf-8")))
@@ -96,7 +96,7 @@ def test_missing_source_date_epoch_is_explicit_and_deterministic() -> None:
 @pytest.mark.slow
 def test_z_generate_script_resolves_output_manuscript_without_touching_tracked_outputs(tmp_path: Path) -> None:
     isolated_project = tmp_path / "template_madlib"
-    for directory in ("manuscript", "scripts", "src"):
+    for directory in ("docs/manuscript", "scripts", "src"):
         shutil.copytree(PROJECT_ROOT / directory, isolated_project / directory)
     script = isolated_project / "scripts" / "z_generate_manuscript_variables.py"
     environment = dict(os.environ)

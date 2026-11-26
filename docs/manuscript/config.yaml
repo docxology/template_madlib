@@ -46,6 +46,8 @@ metadata:
   license: "MIT"
   language: "en"
 
+manuscript_dir: "docs/manuscript"
+
 render:
   formats:
     pdf: true
@@ -177,7 +179,7 @@ madlib:
       - "document fork migration notes"
   method_protocol:
     - name: "Ingest declared manuscript schema"
-      action: "Parse paper metadata and the madlib block from manuscript/config.yaml before any prose or figures are composed."
+      action: "Parse paper metadata and the madlib block from docs/manuscript/config.yaml before any prose or figures are composed."
       evidence: "Config validation tests and MadlibConfig construction from the committed YAML."
       output: "MadlibConfig"
     - name: "Declare review scenario"
@@ -372,7 +374,7 @@ madlib:
       manuscript_effect: "Standalone notes, authoring obligations, and claim-ledger boundaries name fork responsibilities."
   pipeline_phases:
     - name: "Schema intake"
-      input_artifact: "manuscript/config.yaml"
+      input_artifact: "docs/manuscript/config.yaml"
       transformation: "Load paper metadata and validate the madlib schema before generation."
       output_artifact: "MadlibConfig"
       guard: "config parser tests"
@@ -460,7 +462,7 @@ madlib:
     - name: "Method row completeness"
       question: "Does the protocol table cover schema intake, token planning, composition, figures, validation, copy, and review handoff?"
       passing_signal: "method_protocol includes rows for every major pipeline responsibility."
-      artifact: "manuscript/config.yaml and output/data/section_plan.json"
+      artifact: "docs/manuscript/config.yaml and output/data/section_plan.json"
     - name: "Field-origin visibility"
       question: "Can a reviewer tell which visible fields were authored and which were defaulted?"
       passing_signal: "Configured-field inventory and summary tables report explicit and defaulted paths."
@@ -512,14 +514,14 @@ madlib:
     - name: "Fork migration sufficiency"
       question: "Does the documentation tell forks which surfaces to change before adding domain claims?"
       passing_signal: "README, STANDALONE, manuscript README, and Authoring Contract list config, source, test, validator, and claim-ledger obligations."
-      artifact: "README.md, STANDALONE.md, manuscript/README.md, and output/manuscript/10_authoring_contract.md"
+      artifact: "README.md, STANDALONE.md, docs/manuscript/README.md, and output/manuscript/10_authoring_contract.md"
   authoring_obligations:
     - name: "Review generated claims"
       obligation: "Inspect hydrated manuscript bodies before copied outputs are treated as reader-ready."
       review_surface: "output/manuscript and output/web"
     - name: "Review config diffs"
       obligation: "Treat lexicon, slot, title, move, and section-switch edits as source-data changes."
-      review_surface: "manuscript/config.yaml"
+      review_surface: "docs/manuscript/config.yaml"
     - name: "Extend claim evidence"
       obligation: "Update the claim ledger when generated prose adds a new claim boundary."
       review_surface: "data/claim_ledger.yaml"

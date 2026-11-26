@@ -10,42 +10,10 @@
 - Stable concept DOI: [10.5281/zenodo.20786638](https://doi.org/10.5281/zenodo.20786638)
 - Latest deposited version DOI: [10.5281/zenodo.20932025](https://zenodo.org/records/20932025)
 - Additional declared locations: [github_pages](https://docxology.github.io/template_madlib/), [huggingface_hub](https://huggingface.co/datasets/ActiveInference/template_madlib), [ipfs_pinata](https://gateway.pinata.cloud/ipfs/QmcrHEuVYorBXHuLXZRjHQQ7kgKnAJx1MvxNpbyZSrvxNQ), [netlify](https://6a44418df7f6f9fa20037643--tranquil-kleicha-0c9203.netlify.app), [osf](https://osf.io/ndpue/), [pypi](https://test.pypi.org/project/template-madlib/0.1.1/), [software_heritage](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/docxology/template_madlib)
-- Metadata source: [`manuscript/config.yaml`](manuscript/config.yaml); citation sidecars live at the project root.
+- Metadata source: [`docs/manuscript/config.yaml`](docs/manuscript/config.yaml); citation sidecars live at the project root.
 
 Additional locations are config-declared publication evidence; the central index records whether external GitHub and Zenodo checks were refreshed.
 
 <!-- END:PUBLICATION_INDEX -->
 
-This project can be copied as a starting point for conditional manuscript generation. In the template monorepo it is built and rendered through the shared pipeline; after copying it elsewhere, keep these surfaces aligned:
-
-- `manuscript/config.yaml` owns lexicon categories, slots, section switches, section titles, narrative moves, method protocol, design principles, pipeline phases, evaluation criteria, QA probes, failure modes, authoring obligations, visualization controls, audit rules, and contribution claims.
-- `src/config.py` owns schema validation plus explicit/default path tracking.
-- `src/tokens.py` owns deterministic token selection.
-- `src/composition.py` owns generated manuscript bodies, Markdown evidence tables, and grouped figure references.
-- `src/analysis.py` owns artifact generation, configured-field inventories, the cover overview, and generated manuscript figures.
-- `src/manuscript_variables.py` owns the hydrated manuscript variable map.
-- `scripts/z_generate_manuscript_variables.py` owns writing `output/manuscript/`.
-
-Before a fork claims a new method, update the config-owned method surface first:
-
-- Add or revise `method_protocol` rows for each action, evidence artifact, and output.
-- Add or revise `pipeline_phases` for each input, transformation, output, and guard.
-- Document token-selection invariants and keep token choice isolated from renderer state or copied-output state.
-- Add `quality_probes`, `failure_modes`, and `audit_rules` that can catch the new method failing.
-- Add `contribution_claims` and `data/claim_ledger.yaml` rows only for claims backed by local artifacts or real external evidence.
-- Assemble a review packet that includes generated Markdown, PDF, HTML, slides, figures, data, reports, validation results, and copy statistics.
-- Write fork migration notes that name config, source, tests, validators, pipeline stages, and claim-ledger changes.
-- Add domain validators before making empirical, theoretical, benchmark, or reader-quality claims.
-
-Run the project-local gate after edits:
-
-```bash
-uv run --extra dev pytest tests/ --cov=src --cov-fail-under=90
-```
-
-`scripts/01_generate_madlib_artifacts.py` and
-`scripts/z_generate_manuscript_variables.py` import `infrastructure.*`, which
-ships only with the `docxology/template` monorepo checkout; run them there to
-regenerate artifacts and the hydrated manuscript.
-
-Keep DOI metadata tied to real deposited records. The canonical public exemplar is published at `https://github.com/docxology/template_madlib` with concept DOI `10.5281/zenodo.20786638` and version DOI `10.5281/zenodo.20932025`; forks should replace those identifiers only after minting their own records. Do not hand-edit generated Markdown, PDF, HTML, slides, figures, reports, or copied deliverables as if they were source; regenerate them through the equivalent Stage 02-05 pipeline.
+See the [forking guide](docs/forking.md) for the maintained workflow.

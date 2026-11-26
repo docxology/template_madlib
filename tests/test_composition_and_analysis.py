@@ -263,7 +263,7 @@ def test_write_token_density_figure_handles_minimal_plan(tmp_path: Path) -> None
 
 
 def test_project_cover_config_points_to_generated_file() -> None:
-    config = yaml.safe_load((PROJECT_ROOT / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
+    config = yaml.safe_load((PROJECT_ROOT / "docs" / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
 
     assert config["paper"]["cover"]["image"] == "figures/madlib_cover_overview.png"
     artifacts = generate_artifacts(PROJECT_ROOT)
@@ -274,7 +274,7 @@ def test_project_cover_config_points_to_generated_file() -> None:
 
 
 def test_project_config_declares_expanded_method_surface() -> None:
-    config = yaml.safe_load((PROJECT_ROOT / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
+    config = yaml.safe_load((PROJECT_ROOT / "docs" / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
     madlib = config["madlib"]
 
     protocol_names = {row["name"] for row in madlib["method_protocol"]}
@@ -303,9 +303,9 @@ def test_project_config_declares_expanded_method_surface() -> None:
 
 
 def test_project_docs_and_claim_ledger_describe_review_packet_contract() -> None:
-    readme = (PROJECT_ROOT / "README.md").read_text(encoding="utf-8")
-    standalone = (PROJECT_ROOT / "STANDALONE.md").read_text(encoding="utf-8")
-    manuscript_readme = (PROJECT_ROOT / "manuscript" / "README.md").read_text(encoding="utf-8")
+    readme = (PROJECT_ROOT / "docs" / "workflow.md").read_text(encoding="utf-8")
+    standalone = (PROJECT_ROOT / "docs" / "forking.md").read_text(encoding="utf-8")
+    manuscript_readme = (PROJECT_ROOT / "docs" / "manuscript" / "README.md").read_text(encoding="utf-8")
     todo = (PROJECT_ROOT / "TODO.md").read_text(encoding="utf-8")
     tests_agents = (PROJECT_ROOT / "tests" / "AGENTS.md").read_text(encoding="utf-8")
     claim_ledger = yaml.safe_load((PROJECT_ROOT / "data" / "claim_ledger.yaml").read_text(encoding="utf-8"))
@@ -350,7 +350,7 @@ def test_claim_ledger_doi_claim_matches_live_config_publication_fields() -> None
     diverge again in either direction: a real DOI in config that the ledger
     still calls blank, or a blank config DOI that the ledger claims is live.
     """
-    config = yaml.safe_load((PROJECT_ROOT / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
+    config = yaml.safe_load((PROJECT_ROOT / "docs" / "manuscript" / "config.yaml").read_text(encoding="utf-8"))
     publication = config["publication"]
     live_doi = publication.get("doi", "")
     live_version_doi = publication.get("version_doi", "")

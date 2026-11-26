@@ -399,3 +399,17 @@ def test_reordering_single_value_lexicon_does_not_change_plan(tmp_path: Path) ->
 
     assert plan_a.values_for_category("adjectives") == ("only",)
     assert plan_a.values_for_category("adjectives") == plan_b.values_for_category("adjectives")
+
+
+def test_moving_config_changes_only_token_source_pointers(tmp_path: Path) -> None:
+    write_config(tmp_path, base_payload())
+    legacy = generate_token_plan(load_madlib_config(tmp_path))
+    canonical = tmp_path / "docs" / "manuscript"
+    canonical.parent.mkdir()
+    (tmp_path / "manuscript").rename(canonical)
+
+    relocated = generate_token_plan(load_madlib_config(tmp_path))
+
+    assert relocated.choices == tuple(
+        replace(choice, source_key=f"docs/{choice.source_key}") for choice in legacy.choices
+    )

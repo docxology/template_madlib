@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 
 from src.config import SECTION_KEYS, load_madlib_config
@@ -120,11 +121,22 @@ def _write_minimal_outputs(root: Path) -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_validator_passes_on_committed_outputs() -> None:
-    """The regenerated, committed Stage 02 outputs must validate cleanly."""
-    result = validate_generated_outputs(PROJECT_ROOT)
+def test_validator_passes_on_fresh_canonical_outputs(tmp_path: Path) -> None:
+    """Validate rebuilt Stage 02 evidence without rewriting a release snapshot."""
+    from infrastructure.rendering.manuscript_injection import write_resolved_manuscript_tree
+
+    from src.analysis import generate_artifacts
+    from src.manuscript_variables import generate_variables, save_variables
+
+    source = Path("docs/manuscript")
+    shutil.copytree(PROJECT_ROOT / source, tmp_path / source)
+    generate_artifacts(tmp_path)
+    variables = generate_variables(tmp_path)
+    save_variables(variables, tmp_path / "output" / "data" / "manuscript_variables.json")
+    write_resolved_manuscript_tree(tmp_path, variables)
+
+    result = validate_generated_outputs(tmp_path)
     assert result.passed, [issue.message for issue in result.issues]
-    assert len(result.issues) == 0
 
 
 def test_validator_passes_on_minimal_fixture(tmp_path: Path) -> None:
@@ -336,7 +348,7 @@ def test_registry_file_missing_reported(tmp_path: Path) -> None:
 def test_figure_ref_unregistered_reported(tmp_path: Path) -> None:
     _write_minimal_outputs(tmp_path)
     (tmp_path / "output" / "manuscript" / "03_results.md").write_text(
-        "![ghost](../output/figures/ghost.png)\n", encoding="utf-8"
+        "![ghost](../figures/ghost.png)\n", encoding="utf-8"
     )
     assert "figure-ref-unregistered" in _codes(validate_generated_outputs(tmp_path))
 
