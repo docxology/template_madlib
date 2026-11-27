@@ -1,14 +1,6 @@
 # Scripts
 
-Scripts are thin orchestrators. They import `infrastructure.*`, so they run from
-the [`docxology/template`](https://github.com/docxology/template) monorepo
-checkout, where the shared stage machinery is installed:
-
-```bash
-uv run python projects/templates/template_madlib/scripts/01_generate_madlib_artifacts.py
-uv run python projects/templates/template_madlib/scripts/z_generate_manuscript_variables.py
-uv run python projects/templates/template_madlib/scripts/02_validate_outputs.py
-```
+These scripts use shared infrastructure. Follow the [manuscript guide](../docs/manuscript/README.md) to register the standalone checkout with the pinned renderer and run analysis and validation.
 
 The root analysis stage uses the allowlist in `docs/manuscript/config.yaml` and runs these in order.
 
